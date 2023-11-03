@@ -5,13 +5,6 @@ import Components from "./test"
 import Input from "./input"
 
 function App() {
-const url  = "http://localhost:5173/line-callback?token=123&user=mek&email=m@outlook.com&password=5555"
-const searchParams = new URLSearchParams(url)
-for(const p of searchParams){
-  console.log(p)
-}
-
-
 
   const arr = [
     {name:"mek",age:26},
@@ -39,22 +32,31 @@ for(const p of searchParams){
     console.log("failed...",res)
   }
 
-
-  return 
-  // (
+  const click = () =>{
+    console.log("click")
+  }
+  return (
   
-  // <div>
-   
-  // <GoogleLogin 
-  //   clientId={clientId}
-  //   buttonText="sign in with google"
-  //   onSuccess={onSuccess}
-  //   onFailure={onfail}
-  //   cookiePolicy={'single_host_origin'}
-  //   isSignedIn={true}
-  //   /> 
-  //   </div>
-  //   )
+  <div>
+    {arr.map((el,id)=>{
+       return (
+        <>
+        <Components onClick={click} name={el.name} age={el.age} id={el.id}/>    
+        <Input onClick={2} placeholder={el.name}  />  
+        </>
+          )
+      
+    })}
+  <GoogleLogin 
+    clientId={clientId}
+    buttonText="sign in with google"
+    onSuccess={onSuccess}
+    onFailure={onfail}
+    cookiePolicy={'single_host_origin'}
+    isSignedIn={true}
+    /> 
+    </div>
+    )
 }
 
 export default App
