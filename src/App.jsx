@@ -19,7 +19,13 @@ const [active,setActive] = useState(false)
     <div className="">
       <h1 className={active?"text-red-500":"text-blue-500"}>hello</h1>
       <button onClick={()=>setActive(!active)} className=" p-4 bg-slate-600">change state</button>
+<div
+className=" mobile:bg-red-500 desktop:bg-green-500 min-w-full"
+> responsesive</div>
     </div>
+
+
+
   
     )
 }
