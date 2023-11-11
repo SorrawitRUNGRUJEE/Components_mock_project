@@ -8,32 +8,53 @@ import { useState } from "react";
 function App() {
   const [input, setInput] = useState("");
   const data = [
-    { name: "CQK" },
-    { name: "Otoya" },
-    { name: "Chester grill" },
-    { name: "kagonoya" },
-    { name: "BBQ plaza" },
+    { label: "shop picture", name: "shop name", picture: "shop" },
+    { label: "", name: "id number" },
+    { label: "company picture", name: "company", picture: "company" },
+    { label: "", name: "kagonoya" },
+    { label: "", name: "BBQ plaza" },
   ];
 
-  const hdl_search = (e) => {
-    let result = [];
-    setInput(e.target.value);
-    for (let i of data) {
-      let input = e.target.value.trim().toUpperCase();
-      let shopList = i.name.trim().toUpperCase();
-      if (shopList.includes(input)) {
-        result.push(i);
+  return data.map((el) => {
+    if (el.picture) {
+      if (el.picture == "shop") {
+        return (
+          <>
+            <div className=" flex flex-col">
+              <label>{el.name}</label>
+              <input name={el.name} />
+            </div>
+            <div className=" flex flex-col">
+              <label>{el.label}</label>
+              <input type="file" />
+            </div>
+          </>
+        );
+      }
+      if (el.picture == "company") {
+        return (
+          <>
+            <div className=" flex flex-col">
+              <label>{el.name}</label>
+              <input name={el.name} />
+            </div>
+            <div className=" flex flex-col">
+              <label>{el.label}</label>
+              <input type="file" />
+            </div>
+          </>
+        );
       }
     }
-  };
-
-  return (
-    <input
-      className=" border border-solid"
-      value={input}
-      onChange={hdl_search}
-    />
-  );
+    return (
+      <>
+        <div className=" flex flex-col">
+          <label>{el.name}</label>
+          <input name={el.name} />
+        </div>
+      </>
+    );
+  });
 }
 
 export default App;
